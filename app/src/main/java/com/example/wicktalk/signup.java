@@ -15,6 +15,7 @@ Button signup;
         setContentView(R.layout.activity_signup);
         signup=findViewById(R.id.sign_up);
 
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
