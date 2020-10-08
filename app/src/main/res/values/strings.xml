@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WickTalk</string>
+    <string name="forgotPassword"><u>Forgot your password?</u></string>
+    <string name="CreateOne"><u>Create one</u></string>
+    <string name="terms_conditions">By clicking SignUp you agree all the \n Terms and Conditions.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

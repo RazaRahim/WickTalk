@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MainAtivity" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">#3D3D49</item>
+        <item name="android:navigationBarColor">#000</item>
+    </style>
+
+    <style name="Login" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">#222634</item>
+        <item name="android:navigationBarColor">#000</item>
+
+    </style>
+
+    <style name="splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">#fff</item>
+        <item name="android:navigationBarColor">#fff</item>
+    </style>
+</resources>

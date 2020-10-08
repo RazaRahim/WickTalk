@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".signup"
+    android:background="@drawable/bk">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_user"
+            android:drawablePadding="10dp"
+            android:ellipsize="start"
+            android:fontFamily="sans-serif"
+            android:hint="    Username"
+            android:padding="20dp"
+            android:singleLine="true"
+            android:textColor="#fff"
+            android:inputType="text"
+            android:textSize="15sp"
+            android:textColorHint="@drawable/selector" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_user"
+            android:hint="  Full Name"
+            android:padding="20dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="#fff"
+            android:singleLine="true"
+            android:ellipsize="start"
+            android:textColorHint="@drawable/selector"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_email"
+            android:hint="  Email"
+            android:padding="20dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="#fff"
+            android:singleLine="true"
+            android:ellipsize="start"
+            android:textColorHint="@drawable/selector"
+            android:inputType="textEmailAddress"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_country"
+            android:hint="  Select Country"
+            android:padding="20dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="#fff"
+            android:singleLine="true"
+            android:ellipsize="start"
+            android:textColorHint="@drawable/selector"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_002_password"
+            android:hint="  Password"
+            android:padding="20dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="#fff"
+            android:singleLine="true"
+            android:ellipsize="start"
+            android:textColorHint="@drawable/selector"
+            android:inputType="textPassword"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_002_password"
+            android:hint="  Confirm Password"
+            android:padding="20dp"
+            android:layout_margin="10dp"
+            android:drawablePadding="10dp"
+            android:textColor="#fff"
+            android:singleLine="true"
+            android:ellipsize="start"
+            android:textColorHint="@drawable/selector"
+            android:inputType="text"
+            android:textSize="15sp"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:layout_marginLeft="20dp"
+        android:textColor="#fff"
+        android:textSize="14sp"
+        android:text="@string/terms_conditions"/>
+
+        <Button
+
+            android:id="@+id/login_btn"
+
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shape"
+            android:fontFamily="@font/acme"
+            android:text="Register"
+            android:textColor="#fff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="60dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/acme"
+                android:text="Already have an Account?   "
+                android:textColor="#fff"
+                android:textSize="15sp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sign_up"
+                android:text="Log In Now"
+                android:background="#00000000"
+                android:gravity="bottom"
+                android:textSize="15sp"
+                android:textColor="#608DCF"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

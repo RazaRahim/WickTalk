@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:background="@drawable/bk">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/acme"
+            android:text="Login Using Email"
+            android:textColor="#fff"
+            android:textSize="30sp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="50dp"
+    >
+
+    <EditText
+android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_user"
+        android:drawablePadding="10dp"
+        android:ellipsize="start"
+        android:fontFamily="sans-serif"
+        android:hint="   Email or Username"
+        android:padding="20dp"
+        android:singleLine="true"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:textColorHint="@drawable/selector"
+        android:inputType="textEmailAddress"/>
+
+    <EditText
+        android:id="@+id/userPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_002_password"
+        android:hint="  Password"
+        android:padding="20dp"
+        android:layout_margin="10dp"
+        android:drawablePadding="10dp"
+        android:textColor="#fff"
+        android:singleLine="true"
+        android:ellipsize="start"
+        android:textColorHint="@drawable/selector"
+        android:textSize="15sp"
+android:inputType="textPassword"
+        />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="5dp"
+        android:background="#00000000"
+        android:elevation="0dp"
+        android:fontFamily="@font/acme"
+
+        android:text="@string/forgotPassword"
+        android:textColor="@drawable/selector"
+
+        android:textSize="10sp" />
+    <ProgressBar
+        android:id="@+id/progressBar11"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+
+        android:id="@+id/loginbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape"
+        android:fontFamily="@font/acme"
+        android:text="Log In"
+        android:textColor="#fff" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="60dp"
+   >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/acme"
+        android:text="Don't have an Account?   "
+        android:textColor="#fff"
+        android:textSize="15sp" />
+    <Button
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sign_up"
+        android:text="Sign Up Now"
+        android:background="#00000000"
+        android:gravity="bottom"
+        android:textSize="15sp"
+        android:textColor="#608DCF"
+        />
+
+</LinearLayout>
+</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
