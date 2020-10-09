@@ -4,6 +4,14 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
+    android {
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+
+
     defaultConfig {
         applicationId "com.example.wicktalk"
         minSdkVersion 16
@@ -38,4 +46,11 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.0-alpha04'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+
+    implementation "com.quickblox:quickblox-android-sdk-messages:3.9.2"
+    implementation "com.quickblox:quickblox-android-sdk-chat:3.9.2"
+    implementation "com.quickblox:quickblox-android-sdk-content:3.9.2"
+    implementation "com.quickblox:quickblox-android-sdk-videochat-webrtc:3.9.2"
+    implementation "com.quickblox:quickblox-android-sdk-conference:3.9.2"
+    implementation "com.quickblox:quickblox-android-sdk-customobjects:3.9.2"
 }

@@ -14,6 +14,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.quickblox.auth.session.QBSettings;
+import com.quickblox.core.QBEntityCallback;
+import com.quickblox.core.exception.QBResponseException;
+import com.quickblox.core.model.QBEntity;
+import com.quickblox.users.QBUsers;
+import com.quickblox.users.model.QBUser;
 import com.smarteist.autoimageslider.DefaultSliderView;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderLayout;
@@ -21,41 +27,64 @@ import com.smarteist.autoimageslider.SliderView;
 
 public class Login extends AppCompatActivity {
 
+
     EditText username,password;
-    Button login,signup;
+    Button login,register;
     ProgressBar progressBar;
+
+    static final String APP_ID = "86500";
+    static final String AUTH_KEY = "PThnUVzhxFvDJLn";
+    static final String AUTH_SECRET = "ySZGbsemJjQ-nJT";
+    static final String ACCOUNT_KEY = "Xj_6xeWRfavuJz1pAw5J";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        initializeFramework();
+
 username =findViewById(R.id.userName);
 password =findViewById(R.id.userPass);
 login =findViewById(R.id.loginbtn);
-signup=findViewById(R.id.sign_up);
+register=findViewById(R.id.sign_up);
 progressBar =findViewById(R.id.progressBar11);
-
 progressBar.setVisibility(View.INVISIBLE);
 
-login.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-
-            Intent intent = new Intent(Login.this,MainActivity.class);
-            startActivity(intent);
-        }
-
-});
-        signup.setOnClickListener(new View.OnClickListener() {
+register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(Login.this,signup.class);
                 startActivity(intent);
             }
 
         });
+
+login.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+
+        String user = username.getText().toString();
+        String pass = username.getText().toString();
+
+        QBUser qbUser = new QBUser(user,pass);
+        QBUsers.signIn(qbUser).performAsync(new QBEntityCallback<QBUser>() {
+            @Override
+            public void onSuccess(QBUser qbUser, Bundle bundle) {
+                Toast.makeText(Login.this, "Successfully Login", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(QBResponseException e) {
+                Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        }
+
+});
+
 
 
 
@@ -77,6 +106,12 @@ login.setOnClickListener(new View.OnClickListener() {
                 })
                 .setNegativeButton("No", null)
                 .show();
+    }
+
+
+    private void initializeFramework() {
+        QBSettings.getInstance().init(getApplicationContext(),APP_ID,AUTH_KEY,AUTH_SECRET);
+        QBSettings.getInstance().setAccountKey(ACCOUNT_KEY);
     }
 
 }

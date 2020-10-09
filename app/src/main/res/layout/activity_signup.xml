@@ -17,7 +17,7 @@
         >
 
         <EditText
-
+android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -34,6 +34,7 @@
             android:textColorHint="@drawable/selector" />
 
         <EditText
+            android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_user"
@@ -49,6 +50,7 @@
             android:textSize="15sp"/>
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_email"
@@ -64,6 +66,7 @@
             android:textSize="15sp"/>
 
         <EditText
+            android:id="@+id/country"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_country"
@@ -79,6 +82,7 @@
             android:textSize="15sp"/>
 
         <EditText
+            android:id="@+id/pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_002_password"
@@ -94,6 +98,7 @@
             android:textSize="15sp"/>
 
         <EditText
+            android:id="@+id/confirmpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_002_password"
@@ -150,7 +155,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/sign_up"
+                android:id="@+id/login"
                 android:text="Log In Now"
                 android:background="#00000000"
                 android:gravity="bottom"
