@@ -2,6 +2,7 @@ package com.example.wicktalk;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -45,6 +46,12 @@ register.setOnClickListener(new View.OnClickListener() {
         String Email = email.getText().toString();
         String Country = country.getText().toString();
         String pass = password.getText().toString();
+
+        if(TextUtils.isEmpty(pass) || pass.length() < 8)
+        {
+            password.setError("You must have 8 characters in your password");
+            return;
+        }
         String confirm = Confirm.getText().toString();
 
         QBUser qbUser = new QBUser(user,pass);
