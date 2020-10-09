@@ -1,7 +1,5 @@
 package com.example.wicktalk;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.common.api.Response;
 import com.quickblox.auth.QBAuth;
 import com.quickblox.auth.session.QBSession;
 import com.quickblox.core.QBEntityCallback;
@@ -24,8 +25,10 @@ EditText username, Name,email,country,password, Confirm;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        registersession();
+
         login=findViewById(R.id.login);
-        register.findViewById(R.id.login_btn);
+        register=findViewById(R.id.login_btn);
         username=findViewById(R.id.username);
         Name =findViewById(R.id.fullname);
         email=findViewById(R.id.email);
@@ -48,12 +51,13 @@ register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onSuccess(QBUser qbUser, Bundle bundle) {
                 Toast.makeText(signup.this, "Sign Up successfully", Toast.LENGTH_SHORT).show();
+
 //                finish();
             }
 
             @Override
             public void onError(QBResponseException e) {
-                Toast.makeText(signup.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(signup.this, ""  +e.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -62,19 +66,19 @@ register.setOnClickListener(new View.OnClickListener() {
 
     }
 
-//    private void registersession() {
-//        QBAuth.createSession().performAsync(new QBEntityCallback<QBSession>() {
-//            @Override
-//            public void onSuccess(QBSession qbSession, Bundle bundle) {
-//
-//            }
-//
-//            @Override
-//            public void onError(QBResponseException e) {
-//                Log.e("Error",e.getMessage());
-//            }
-//        });
-//    }
+    private void registersession() {
+        QBAuth.createSession().performAsync(new QBEntityCallback<QBSession>() {
+            @Override
+            public void onSuccess(QBSession qbSession, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onError(QBResponseException e) {
+                Log.e("Error",e.getMessage());
+            }
+        });
+    }
 
 
 }

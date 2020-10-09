@@ -110,7 +110,7 @@ android:id="@+id/username"
             android:singleLine="true"
             android:ellipsize="start"
             android:textColorHint="@drawable/selector"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="15sp"/>
 
     <CheckBox
@@ -132,9 +132,9 @@ android:id="@+id/username"
             android:layout_marginTop="30dp"
             android:layout_marginRight="80dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/shape"
             android:fontFamily="@font/acme"
             android:text="Register"
+            android:background="@drawable/shape"
             android:textColor="#fff" />
 
         <LinearLayout

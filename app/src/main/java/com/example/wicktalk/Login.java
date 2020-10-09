@@ -65,13 +65,16 @@ login.setOnClickListener(new View.OnClickListener() {
     public void onClick(View view) {
 
         String user = username.getText().toString();
-        String pass = username.getText().toString();
+        String pass = password.getText().toString();
 
         QBUser qbUser = new QBUser(user,pass);
         QBUsers.signIn(qbUser).performAsync(new QBEntityCallback<QBUser>() {
             @Override
             public void onSuccess(QBUser qbUser, Bundle bundle) {
                 Toast.makeText(Login.this, "Successfully Login", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Login.this,MainActivity.class);
+                startActivity(intent);
+                finish();
             }
 
             @Override
