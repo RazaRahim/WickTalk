@@ -18,13 +18,18 @@ import com.quickblox.auth.session.BaseService;
 import com.quickblox.auth.session.QBSession;
 import com.quickblox.chat.QBChat;
 import com.quickblox.chat.QBChatService;
+import com.quickblox.chat.QBRestChatService;
+import com.quickblox.chat.model.QBChatDialog;
 import com.quickblox.core.QBEntityCallback;
 import com.quickblox.core.exception.BaseServiceException;
 import com.quickblox.core.exception.QBResponseException;
 import com.quickblox.core.model.QBEntityLimited;
 import com.quickblox.core.request.QBLimitedRequestBuilder;
 import com.quickblox.core.request.QBRequestBuilder;
+import com.quickblox.core.request.QBRequestGetBuilder;
 import com.quickblox.users.model.QBUser;
+
+import java.util.ArrayList;
 
 
 public class all extends Fragment {
@@ -48,7 +53,18 @@ public class all extends Fragment {
 
     private void loadChatDialouge() {
         QBRequestBuilder qbRequestBuilder = new QBRequestBuilder();
-        qbRequestBuilder;
+
+        QBRestChatService.getChatDialogs(null, (QBRequestGetBuilder) qbRequestBuilder).performAsync(new QBEntityCallback<ArrayList<QBChatDialog>>() {
+            @Override
+            public void onSuccess(ArrayList<QBChatDialog> qbChatDialogs, Bundle bundle) {
+
+            }
+
+            @Override
+            public void onError(QBResponseException e) {
+
+            }
+        });
     }
 
     private void createChateSession() {
