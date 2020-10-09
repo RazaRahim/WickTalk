@@ -1,5 +1,6 @@
 package com.example.wicktalk;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +19,7 @@ import com.quickblox.users.QBUsers;
 import com.quickblox.users.model.QBUser;
 
 public class signup extends AppCompatActivity {
-    Button login,register;
+    Button Login,register;
 EditText username, Name,email,country,password, Confirm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ EditText username, Name,email,country,password, Confirm;
 
         registersession();
 
-        login=findViewById(R.id.login);
+        Login=findViewById(R.id.login);
         register=findViewById(R.id.login_btn);
         username=findViewById(R.id.username);
         Name =findViewById(R.id.fullname);
@@ -63,6 +64,16 @@ register.setOnClickListener(new View.OnClickListener() {
         });
     }
 });
+
+
+        Login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(signup.this,Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
