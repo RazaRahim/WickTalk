@@ -63,7 +63,7 @@ register.setOnClickListener(new View.OnClickListener() {
 login.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-
+        progressBar.setVisibility(View.VISIBLE);
         String user = username.getText().toString();
         String pass = password.getText().toString();
 
@@ -73,6 +73,8 @@ login.setOnClickListener(new View.OnClickListener() {
             public void onSuccess(QBUser qbUser, Bundle bundle) {
                 Toast.makeText(Login.this, "Successfully Login", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Login.this,MainActivity.class);
+               intent.putExtra("user",user);
+               intent.putExtra("password",pass);
                 startActivity(intent);
                 finish();
             }

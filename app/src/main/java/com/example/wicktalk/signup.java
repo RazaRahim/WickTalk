@@ -52,9 +52,12 @@ register.setOnClickListener(new View.OnClickListener() {
             password.setError("You must have 8 characters in your password");
             return;
         }
-        String confirm = Confirm.getText().toString();
+
 
         QBUser qbUser = new QBUser(user,pass);
+
+        qbUser.setFullName(Name.getText().toString());
+
         QBUsers.signUp(qbUser).performAsync(new QBEntityCallback<QBUser>() {
             @Override
             public void onSuccess(QBUser qbUser, Bundle bundle) {
