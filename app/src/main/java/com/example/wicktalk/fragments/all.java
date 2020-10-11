@@ -1,6 +1,7 @@
 package com.example.wicktalk.fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.wicktalk.Adapters.chatDialougeAdapter;
+import com.example.wicktalk.ListUserActivity;
 import com.example.wicktalk.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.quickblox.auth.QBAuth;
@@ -40,29 +43,48 @@ public class all extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadChatDialouge();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_all, container, false);
+
         createChateSession();
+        chatDialouge = (ListView)view.findViewById(R.id.chatdialouge);
         loadChatDialouge();
+
+        floatingActionButton = (FloatingActionButton)view.findViewById(R.id.floatbtn);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ListUserActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
     private void loadChatDialouge() {
-        QBRequestBuilder qbRequestBuilder = new QBRequestBuilder();
-
+        QBRequestGetBuilder qbRequestBuilder = new QBRequestGetBuilder();
+        qbRequestBuilder.setLimit(100);
         QBRestChatService.getChatDialogs(null, (QBRequestGetBuilder) qbRequestBuilder).performAsync(new QBEntityCallback<ArrayList<QBChatDialog>>() {
             @Override
             public void onSuccess(ArrayList<QBChatDialog> qbChatDialogs, Bundle bundle) {
-
+                chatDialougeAdapter adapter=new chatDialougeAdapter(getContext(),qbChatDialogs);
+                chatDialouge.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onError(QBResponseException e) {
-
+Log.e("Error",""+e.getMessage());
             }
         });
     }

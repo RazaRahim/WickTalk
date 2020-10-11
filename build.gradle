@@ -11,7 +11,11 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
-
+repositories{
+    maven {
+        url 'http://dl.bintray.com/amulyakhare/maven'
+    }
+}
 allprojects {
     repositories {
         google()

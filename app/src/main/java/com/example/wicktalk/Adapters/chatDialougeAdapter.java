@@ -1,6 +1,9 @@
 package com.example.wicktalk.Adapters;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.icu.text.Transliterator;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +11,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amulyakhare.textdrawable.TextDrawable;
 import com.example.wicktalk.R;
+import com.github.lzyzsd.randomcolor.RandomColor;
+import com.google.android.material.internal.TextDrawableHelper;
 import com.quickblox.chat.model.QBChatDialog;
 
 import java.util.ArrayList;
@@ -51,9 +57,22 @@ public class chatDialougeAdapter extends BaseAdapter {
          message = (TextView)view1.findViewById(R.id.list_chat_dialouge_title);
          title = (TextView)view1.findViewById(R.id.list_chat_dialouge_message);
          imageView = (ImageView) view1.findViewById(R.id.image);
+         message.setText(qbChatDialogs.get(i).getLastMessage());
+         title.setText(qbChatDialogs.get(i).getName());
 
+         RandomColor randomColor = new RandomColor();
+         int color = randomColor.randomColor();
+
+         TextDrawable.IBuilder builder = TextDrawable.builder().beginConfig()
+                 .withBorder(4)
+                 .endConfig()
+                 .round();
+
+         TextDrawable drawable = builder.build(title.getText().toString().substring(0,1).toUpperCase(),color);
+         imageView.setImageDrawable(drawable);
 
      }
      return view1;
     }
+
 }
