@@ -86,7 +86,7 @@ public class chatMessageActivity extends AppCompatActivity implements QBChatDial
                     adapter.notifyDataSetChanged();
                 }
 
-                //removev text from edit text
+                //remove text from edit text
                 edtContent.setText("");
                 edtContent.setFocusable(true);
 
