@@ -99,10 +99,13 @@ Log.e("Error",""+e.getMessage());
         nDialouge.setCanceledOnTouchOutside(false);
         nDialouge.show();
 
+
         int countChoice = lstUsers.getCount();
 
+
         for(int i=0;i<countChoice;i++){
-            if(checkedItemPositions.get(i));
+
+            if(checkedItemPositions.get(i))
             {
                 QBUser user = (QBUser)lstUsers.getItemAtPosition(i);
                 QBChatDialog dialog = DialogUtils.buildPrivateDialog(user.getId());

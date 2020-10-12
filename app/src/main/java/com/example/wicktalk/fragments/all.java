@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.wicktalk.Adapters.chatDialougeAdapter;
 import com.example.wicktalk.Holder.QBUsersHolder;
@@ -113,7 +114,7 @@ Log.e("Error",""+e.getMessage());
 
         ProgressDialog progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Please wait...");
-        progressDialog.setCanceledOnTouchOutside(false);
+        //progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 
         String user,password;
@@ -125,11 +126,13 @@ Log.e("Error",""+e.getMessage());
             @Override
             public void onSuccess(ArrayList<QBUser> qbUsers, Bundle bundle) {
                 QBUsersHolder.getInstance().putUsers(qbUsers);
+                progressDialog.dismiss();
             }
 
             @Override
             public void onError(QBResponseException e) {
-
+                progressDialog.dismiss();
+                Toast.makeText(getContext(), ""+ e, Toast.LENGTH_SHORT).show();
             }
         });
 

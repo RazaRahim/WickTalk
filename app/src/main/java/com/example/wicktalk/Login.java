@@ -71,6 +71,7 @@ login.setOnClickListener(new View.OnClickListener() {
         QBUsers.signIn(qbUser).performAsync(new QBEntityCallback<QBUser>() {
             @Override
             public void onSuccess(QBUser qbUser, Bundle bundle) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(Login.this, "Successfully Login", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Login.this,MainActivity.class);
                intent.putExtra("user",user);
@@ -82,6 +83,7 @@ login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onError(QBResponseException e) {
                 Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
 
             }
         });
