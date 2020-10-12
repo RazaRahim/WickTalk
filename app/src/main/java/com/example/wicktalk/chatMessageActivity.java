@@ -75,6 +75,17 @@ public class chatMessageActivity extends AppCompatActivity implements QBChatDial
                     e.printStackTrace();
                 }
 
+                //Fix private chat don't show message
+                if(qbChatDialog.getType() == QBDialogType.PRIVATE)
+                {
+                    //Cache Message
+                    QBChatMessageHolder.getInstance().putMessage(qbChatDialog.getDialogId(),chatMessage);
+                    ArrayList<QBChatMessage> messages = QBChatMessageHolder.getInstance().getChatMessageByDialogId(chatMessage.getDialogId());
+                    adapter = new chatMessageAdapter(getBaseContext(),messages);
+                    lstChatMessages.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                }
+
                 //removev text from edit text
                 edtContent.setText("");
                 edtContent.setFocusable(true);
