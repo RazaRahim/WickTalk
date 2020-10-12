@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".chatMessageActivity"></activity>
-        <activity android:name=".ListUserActivity" />
+        <activity android:name=".chatMessageActivity"
+            android:theme="@style/MainAtivity"></activity>
+        <activity android:name=".ListUserActivity"
+            android:theme="@style/MainAtivity"/>
         <activity
             android:name=".signup"
             android:theme="@style/Login" />
