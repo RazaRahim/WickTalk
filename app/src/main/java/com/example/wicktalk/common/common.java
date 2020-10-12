@@ -7,6 +7,8 @@ import java.util.List;
 
 public class common {
 
+    public static final String DIALOG_EXTRA = "Dialogs";
+
     public static String createChatDialougeName(List<Integer> qbUsers)
     {
         List<QBUser> qbUsers1 = QBUsersHolder.getInstance().getUsersByIds(qbUsers);

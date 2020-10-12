@@ -2,6 +2,7 @@ package com.example.wicktalk.fragments;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.icu.text.Transliterator;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,11 +11,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.wicktalk.Adapters.chatDialougeAdapter;
+import com.example.wicktalk.Holder.QBUsersHolder;
 import com.example.wicktalk.ListUserActivity;
 import com.example.wicktalk.R;
+import com.example.wicktalk.chatMessageActivity;
+import com.example.wicktalk.common.common;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.quickblox.auth.QBAuth;
 import com.quickblox.auth.session.BaseService;
@@ -30,6 +35,7 @@ import com.quickblox.core.model.QBEntityLimited;
 import com.quickblox.core.request.QBLimitedRequestBuilder;
 import com.quickblox.core.request.QBRequestBuilder;
 import com.quickblox.core.request.QBRequestGetBuilder;
+import com.quickblox.users.QBUsers;
 import com.quickblox.users.model.QBUser;
 
 import java.util.ArrayList;
@@ -56,7 +62,21 @@ public class all extends Fragment {
         View view = inflater.inflate(R.layout.fragment_all, container, false);
 
         createChateSession();
+
         chatDialouge = (ListView)view.findViewById(R.id.chatdialouge);
+        chatDialouge.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                 QBChatDialog qbChatDialog = (QBChatDialog)chatDialouge.getAdapter().getItem(i);
+                 Intent intent = new Intent(getContext(), chatMessageActivity.class);
+                 intent.putExtra(common.DIALOG_EXTRA,qbChatDialog);
+                 startActivity(intent);
+            }
+        });
+
+
+
+
         loadChatDialouge();
 
         floatingActionButton = (FloatingActionButton)view.findViewById(R.id.floatbtn);
@@ -100,7 +120,20 @@ Log.e("Error",""+e.getMessage());
         user =getActivity().getIntent().getExtras().getString("user");
         password =getActivity().getIntent().getExtras().getString("password");
 
-        QBUser qbUser = new QBUser(user,password);
+        //Load all user and save to cache
+        QBUsers.getUsers(null).performAsync(new QBEntityCallback<ArrayList<QBUser>>() {
+            @Override
+            public void onSuccess(ArrayList<QBUser> qbUsers, Bundle bundle) {
+                QBUsersHolder.getInstance().putUsers(qbUsers);
+            }
+
+            @Override
+            public void onError(QBResponseException e) {
+
+            }
+        });
+
+       final QBUser qbUser = new QBUser(user,password);
         QBAuth.createSession(qbUser).performAsync(new QBEntityCallback<QBSession>() {
             @Override
             public void onSuccess(QBSession qbSession, Bundle bundle) {

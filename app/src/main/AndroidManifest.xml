@@ -9,16 +9,17 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListUserActivity"></activity>
+        <activity android:name=".chatMessageActivity"></activity>
+        <activity android:name=".ListUserActivity" />
         <activity
             android:name=".signup"
-            android:theme="@style/Login"></activity>
+            android:theme="@style/Login" />
         <activity
             android:name=".onboard.slider"
-            android:theme="@style/AppTheme1"></activity>
+            android:theme="@style/AppTheme1" />
         <activity
             android:name=".Login"
-            android:theme="@style/Login"></activity>
+            android:theme="@style/Login" />
         <activity
             android:name=".splash"
             android:theme="@style/splash">
@@ -30,7 +31,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/MainAtivity"></activity>
+            android:theme="@style/MainAtivity" />
 
         <meta-data
             android:name="preloaded_fonts"
