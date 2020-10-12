@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -12,6 +13,7 @@ import com.example.wicktalk.Adapters.chatMessageAdapter;
 import com.example.wicktalk.Holder.QBChatMessageHolder;
 import com.example.wicktalk.common.common;
 import com.google.android.gms.common.internal.service.Common;
+import com.google.android.material.snackbar.Snackbar;
 import com.quickblox.chat.QBChatService;
 import com.quickblox.chat.QBIncomingMessagesManager;
 import com.quickblox.chat.QBRestChatService;
@@ -22,6 +24,8 @@ import com.quickblox.chat.model.QBChatMessage;
 import com.quickblox.chat.request.QBMessageGetBuilder;
 import com.quickblox.core.QBEntityCallback;
 import com.quickblox.core.exception.QBResponseException;
+
+import org.jivesoftware.smack.SmackException;
 
 import java.util.ArrayList;
 
@@ -40,6 +44,31 @@ chatMessageAdapter adapter;
         initViews();
         initChatDialoge();
         retrieveMessage();
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                QBChatMessage chatMessage = new QBChatMessage();
+                chatMessage.setBody(edtContent.getText().toString());
+                chatMessage.setSenderId(QBChatService.getInstance().getUser().getId());
+                chatMessage.setSaveToHistory(true);
+
+                try {
+                    qbChatDialog.sendMessage(chatMessage);
+                }catch (SmackException.NotConnectedException e){
+                    e.printStackTrace();
+                }
+                //put Message to cache
+                QBChatMessageHolder.getInstance().putMessage(qbChatDialog.getDialogId(),chatMessage);
+                ArrayList<QBChatMessage> messages = QBChatMessageHolder.getInstance().getChatMessageByDialogId(qbChatDialog.getDialogId());
+                adapter=new chatMessageAdapter(getBaseContext(),messages);
+                lstChatMessages.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                //removev text from edit text
+                edtContent.setText("");
+                edtContent.setFocusable(true);
+
+            }
+        });
     }
 
     private void retrieveMessage() {
