@@ -21,7 +21,7 @@
         android:layout_height="40dp"
         android:id="@+id/send_button"
         android:background="@null"
-        android:src="@drawable/ic_003_send"
+        android:src="@drawable/ic_message"
         android:padding="4dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true" />
