@@ -57,6 +57,7 @@ register.setOnClickListener(new View.OnClickListener() {
         QBUser qbUser = new QBUser(user,pass);
 
         qbUser.setFullName(Name.getText().toString());
+        qbUser.setPassword(password.getText().toString());
 
         QBUsers.signUp(qbUser).performAsync(new QBEntityCallback<QBUser>() {
             @Override
